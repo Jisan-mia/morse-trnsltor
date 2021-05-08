@@ -43,6 +43,7 @@ nav a {
 	text-decoration: none;
 	color: #48487b;
 	padding: 15px 8px;
+	font-size: 1rem;
 }
 
 nav a:hover {
@@ -67,14 +68,14 @@ nav a:hover {
 .main {
 	margin-top: 20px;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	grid-gap: 20px;
 }
 
 .main textarea {
 	min-width: 100%;
 	resize: vertical;
-	width: 100%;
+	max-width: 100%;
 	border: 0.6px solid lightgray;
 	border-radius: 2px;
 	margin-top: 10px;
@@ -100,6 +101,44 @@ nav a:hover {
 	display: flex;
 	align-items: center;
 }
+
+/* morsecode chart img */
+.morse-chart {
+	margin: 60px auto;
+	border: 0.5px solid #e0e0e0;
+	text-align: center;
+}
+.morse-chart h1 {
+	padding: 12px;
+	font-size: 2rem;
+}
+#morseMainChart {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	/* grid-row-gap: 20px; */
+}
+
+.chart-item {
+	border-top: 0.1px solid lightgray;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 0;
+}
+
+.chart-item strong {
+	/* display: block; */
+	font-size: 1.2rem;
+	font-weight: 800;
+}
+.chart-item .symbol {
+	font-weight: 400;
+	font-size: 1.4;
+	color: #3d3d3d;
+	letter-spacing: 5px;
+}
+
 @media (max-width: 768px) {
 	.header h2 {
 		font-size: 1.2rem;
@@ -109,5 +148,29 @@ nav a:hover {
 	}
 	nav a {
 		padding: 15px 0;
+	}
+
+	.main textarea {
+		min-height: 120px;
+	}
+	.main .top i {
+		font-size: 1rem;
+		margin-right: 5px;
+	}
+	nav a {
+		padding: 10px 5px;
+		font-size: 0.8rem;
+	}
+	.brand img {
+		width: 20px;
+		margin-right: 5px;
+	}
+}
+
+@media (max-width: 425px) {
+	.main {
+		margin-top: 15px;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		grid-gap: 15px;
 	}
 }
