@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+
+		<title>Morse Code Translator</title>
+	</head>
+	<body>
+		<nav>
+			<div class="container nav-wrapper">
+				<a href="#" class="brand">
+					<img src="img/logo.png" alt="logo" />
+					<span>Morse Decoder</span>
+				</a>
+
+				<a href="#" class="brand">
+					<img src="img/github_PNG58.png" alt="github-logo" />
+					<span>Github</span>
+				</a>
+			</div>
+		</nav>
+
+		<section class="header">
+			<header class="container">
+				<h2>Morse Code Translator</h2>
+				<p>
+					It's easy to use Morse Code Translator, translate Morse code to text
+					and text to Morse code.
+				</p>
+			</header>
+		</section>
+
+		<section class="main container">
+			<div class="text-area">
+				<div class="top">
+					<i class="far fa-clipboard"></i>
+					<strong>Text</strong>
+				</div>
+				<textarea
+					oninput="onTextInput(this)"
+					name="text"
+					id="textAreaInput"
+					rows="7"
+				></textarea>
+			</div>
+			<div class="morse-area">
+				<div class="top">
+					<i class="far fa-clipboard"></i>
+					<strong>Morse Code</strong>
+				</div>
+				<textarea
+					oninput="onMorseInput(this)"
+					name="morse"
+					id="morseAreaInput"
+					rows="7"
+				></textarea>
+			</div>
+		</section>
+
+		<script src="js/script.js"></script>
+	</body>
+</html>
