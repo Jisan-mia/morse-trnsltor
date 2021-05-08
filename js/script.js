@@ -44,6 +44,7 @@ const MORSE_CODE = {
 	"--..--": ",",
 };
 
+// MORSE_CODE obj keys to values and values to keys odolbodl
 const odolBodolFunc = (keys, values) => {
 	let obj = {};
 
@@ -55,6 +56,16 @@ const odolBodolFunc = (keys, values) => {
 const morseKeys = Object.keys(MORSE_CODE);
 const morseValues = Object.values(MORSE_CODE);
 const odolBodolMorse = odolBodolFunc(morseKeys, morseValues);
+
+//text input validate
+const checkTextInputValidation = (input) => {
+	textAreaInput.value = textAreaInput.value.replace(input, "");
+
+	textAreaInput.style.borderColor = "red";
+	setTimeout(() => {
+		textAreaInput.style.borderColor = "#3273dc";
+	}, 400);
+};
 
 // text to morse code
 const onTextInput = (e) => {
@@ -68,41 +79,46 @@ const onTextInput = (e) => {
 		for (let y = 0; y < letters[x].length; y++) {
 			if (odolBodolMorse[letters[x][y]]) {
 				morse[x].push(odolBodolMorse[letters[x][y]]);
+			} else {
+				checkTextInputValidation(letters[x][y]);
 			}
 		}
 	}
-	morseAreaInput.value = morse.map((word) => word.join(" ")).join("   ");
+	if (text) {
+		morseAreaInput.value = morse.map((word) => word.join(" ")).join("   ");
+	} else {
+		morseAreaInput.value = "";
+	}
 };
 
 //morse code validate
 const checkMorseValidation = (input) => {
-	const isValid =
-		input.includes(".") || input.includes("-") || input.includes(" ");
-	console.log(input, isValid);
+	morseAreaInput.value = input.replace(/[^.-\s]/g, "");
+	const x = /[^.-\s]/g.test(input); //invalid input true
+	if (x) {
+		morseAreaInput.style.borderColor = "red";
+		setTimeout(() => {
+			morseAreaInput.style.borderColor = "#3273dc";
+		}, 400);
+	}
 };
 
 // morse code to text
 const onMorseInput = (e) => {
 	const morseInput = e.value;
 	// .--- .. ... .- -.   -- .. .-
-	const checkMorse = checkMorseValidation(e.value);
+	checkMorseValidation(e.value);
 
-	let morseToText;
-
-	if (morseInput) {
-		morseToText = morseInput
-			.split("   ")
-			.map((word) =>
-				word
-					.split(" ")
-					.map((char) => MORSE_CODE[char])
-					.join("")
-			)
-			.join(" ")
-			.trim();
-	} else {
-		console.log(`only '.' and '-' allow`);
-	}
+	const morseToText = morseInput
+		.split("   ")
+		.map((word) =>
+			word
+				.split(" ")
+				.map((char) => MORSE_CODE[char])
+				.join("")
+		)
+		.join(" ")
+		.trim();
 
 	/*
 	# Another solution
@@ -119,5 +135,9 @@ const onMorseInput = (e) => {
 		}
 	}
 	*/
-	textAreaInput.value = morseToText;
+	if (morseAreaInput.value) {
+		textAreaInput.value = morseToText;
+	} else {
+		textAreaInput.value = "";
+	}
 };
