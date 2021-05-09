@@ -3,6 +3,7 @@ const morseAreaInput = document.querySelector("#morseAreaInput");
 const textClipboard = document.querySelector("#textClipboard");
 const morseClipboard = document.querySelector("#morseClipboard");
 const morseMainChart = document.getElementById("morseMainChart");
+const accordians = document.querySelectorAll(".accordian-label");
 // morse code key vales
 const MORSE_CODE = {
 	".-": "A",
@@ -240,4 +241,20 @@ Object.entries(MORSE_CODE).forEach(([key, value]) => {
 							 		<strong> ${value}</strong> 
 									<strong class="symbol"> ${key} </strong> 	
 								<div>`;
+});
+
+// accoridan
+Array.from(accordians).forEach((accordian) => {
+	accordian.addEventListener("click", function () {
+		// toggle accordians + and -
+		this.classList.toggle("is-open");
+		const content = this.nextElementSibling;
+		if (content.style.maxHeight) {
+			//content is open, need to close
+			content.style.maxHeight = null;
+		} else {
+			// content is close, need to open
+			content.style.maxHeight = content.scrollHeight + "px";
+		}
+	});
 });

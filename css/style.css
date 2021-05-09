@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Itim&family=Montserrat:wght@300;400&Roboto+Mono:wght@200;300;400;500;600;700&display=swap");
 * {
 	margin: 0;
 	padding: 0;
@@ -137,6 +136,53 @@ nav a:hover {
 	font-size: 1.4;
 	color: #3d3d3d;
 	letter-spacing: 5px;
+}
+
+/* accordian design */
+/* morse-accordion
+contentBox
+accordian-label
+accordian-content */
+
+.morse-accordion {
+	margin: 80px auto;
+	font-family: "Roboto", sans-serif;
+}
+.morse-accordion .contentBox {
+	margin: 25px auto;
+}
+.accordian-label {
+	font-weight: 500;
+	font-size: 1.1rem;
+	background: #eff3f0;
+	padding: 15px 20px;
+	cursor: pointer;
+	transition: all 0.2s linear;
+}
+.accordian-label::after {
+	content: "+";
+	float: right;
+	font-size: 1.2rem;
+}
+
+.accordian-label.is-open::after {
+	content: "-";
+}
+.accordian-label:hover,
+.accordian-label.is-open {
+	background: #dbdbdbd0;
+}
+
+.accordian-content {
+	line-height: 2;
+	letter-spacing: 0.9px;
+	font-size: 1rem;
+	font-weight: 400;
+	color: #555454;
+	padding: 0px 20px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-in-out;
 }
 
 @media (max-width: 768px) {
