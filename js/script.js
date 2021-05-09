@@ -42,7 +42,6 @@ const MORSE_CODE = {
 	"--...": "7",
 	"---..": "8",
 	"----.": "9",
-	" ": " ",
 };
 
 // MORSE_CODE obj keys to values and values to keys odolbodl
@@ -82,10 +81,21 @@ const checkMorseValidation = (input) => {
 const checkInputValidation = (input, inputArea) => {
 	inputArea.value = inputArea.value.replace(input, "");
 
-	inputArea.style.borderColor = "red";
-	setTimeout(() => {
-		inputArea.style.borderColor = "#3273dc";
-	}, 400);
+	if (inputArea.value == morseAreaInput.value) {
+		if (input === "") {
+			// console.log("it's space");
+		} else {
+			inputArea.style.borderColor = "red";
+			setTimeout(() => {
+				inputArea.style.borderColor = "#3273dc";
+			}, 400);
+		}
+	} else {
+		inputArea.style.borderColor = "red";
+		setTimeout(() => {
+			inputArea.style.borderColor = "#3273dc";
+		}, 400);
+	}
 };
 
 //show output on screen function
@@ -101,6 +111,7 @@ const showOutput = (input, areaInput, tTMMTT) => {
 // tTMMTT = textToMorseOrMorseToText
 const textToMorseOrMorseToText = (letters, morseCode, inputArea) => {
 	let tTMMTT = [];
+
 	for (let x = 0; x < letters.length; x++) {
 		tTMMTT[x] = [];
 		for (let y = 0; y < letters[x].length; y++) {
@@ -120,6 +131,7 @@ const onTextInput = (e) => {
 	const textInput = e.value.toUpperCase();
 	const word = textInput.split(" ");
 	const letters = word.map((char) => char.split(""));
+
 	/*
 	let morse = [];
 	for (let x = 0; x < letters.length; x++) {
@@ -162,6 +174,7 @@ const onMorseInput = (e) => {
 	const morseInput = e.value;
 	const word = morseInput.split("   ");
 	const letters = word.map((char) => char.split(" "));
+
 	/*
 	let morseToText2 = [];
 	for (let x = 0; x < letters.length; x++) {
