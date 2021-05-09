@@ -42,6 +42,7 @@ const MORSE_CODE = {
 	"--...": "7",
 	"---..": "8",
 	"----.": "9",
+	" ": " ",
 };
 
 // MORSE_CODE obj keys to values and values to keys odolbodl
@@ -110,7 +111,7 @@ const textToMorseOrMorseToText = (letters, morseCode, inputArea) => {
 			}
 		}
 	}
-	return tTMMTT.map((word) => word.join(" ")).join("   ");
+	return tTMMTT;
 };
 
 // text to morse code
@@ -137,8 +138,8 @@ const onTextInput = (e) => {
 		odolBodolMorse,
 		textAreaInput
 	);
-
-	showOutput(textInput, morseAreaInput, textToMorse);
+	const textToMorseMain = textToMorse.map((word) => word.join(" ")).join("   ");
+	showOutput(textInput, morseAreaInput, textToMorseMain);
 };
 
 // morse code to text
@@ -181,7 +182,9 @@ const onMorseInput = (e) => {
 		morseAreaInput
 	);
 
-	showOutput(morseInput, textAreaInput, morseToText);
+	const morseToTextMain = morseToText.map((word) => word.join("")).join(" ");
+
+	showOutput(morseInput, textAreaInput, morseToTextMain);
 };
 
 // copy clipboard
